@@ -8,17 +8,6 @@ const publicDirectoryPath = path.join(__dirname, './../public')
 
 app.use(express.static(publicDirectoryPath));
 
-app.get('/help', (req, res) => {
-    res.send({
-        name: 'Aashish',
-        age: 22
-     });
-})
-
-app.get('/about', (req, res) => {
-    res.send('<h3>Stay happy!!! Stay jolly jolly :)</h3>');
-})
-
 app.get('/weather', (req,res) => {
     res.send({
         address: 'Lalitpur',
