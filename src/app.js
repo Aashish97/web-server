@@ -1,18 +1,21 @@
 const path = require('path');
 
 const express = require('express');
+const hbs = require('hbs');
 
 const app = express();
 
 //Defines paths for express config
 const publicDirectoryPath = path.join(__dirname, './../public');
-const viewDirectoryPath = path.join(__dirname, './../templates');
+const viewDirectoryPath = path.join(__dirname, './../templates/views');
+const partialsPath = path.join(__dirname, './../templates/partials');
 
 //Sets the view engine value for a given express setting
 app.set('view engine', 'hbs');
 
 //Set up views location. The default location is views and inorder to use template folder we should enable this
 app.set('views', viewDirectoryPath);
+hbs.registerPartials(partialsPath);
 
 //load static contents from the given directory path
 app.use(express.static(publicDirectoryPath));
@@ -27,14 +30,16 @@ app.get('', (req, res) => {
 
 app.get('/about', (req, res) => {
     res.render('about', {
-        title: "About",
+        title: 'About',
         name: 'Aashish'
     })
 })
 
 app.get('/help', (req, res) => {
     res.render('help', {
-        helpText: "This is a help message"
+        title: 'help',
+        name: 'Aashish',
+        helpText: 'This is a help message'
     })
 })
 
