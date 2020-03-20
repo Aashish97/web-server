@@ -4,10 +4,15 @@ const express = require('express');
 
 const app = express();
 
-const publicDirectoryPath = path.join(__dirname, './../public')
+//Defines paths for express config
+const publicDirectoryPath = path.join(__dirname, './../public');
+const viewDirectoryPath = path.join(__dirname, './../templates');
 
-//sets the view engine value for a given express setting
+//Sets the view engine value for a given express setting
 app.set('view engine', 'hbs');
+
+//Set up views location. The default location is views and inorder to use template folder we should enable this
+app.set('views', viewDirectoryPath);
 
 //load static contents from the given directory path
 app.use(express.static(publicDirectoryPath));
