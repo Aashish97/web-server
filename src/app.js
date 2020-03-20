@@ -54,11 +54,11 @@ app.get('/weather', (req,res) => {
 
 //displaying error for the url after help that mismatches
 app.get('/help/*', (req, res) => {
-    res.render('404',{
+    res.render('404', {
         title: '404',
-        errorMessage: 'Help Page Article Not Found !!!',
-        name: 'Aashish'
-    });
+        name: 'Aashish',
+        errorMessage: 'Help article not found.'
+    })
 })
 
 //displaying own message for error
