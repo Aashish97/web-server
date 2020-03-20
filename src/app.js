@@ -43,11 +43,30 @@ app.get('/help', (req, res) => {
     })
 })
 
+
 app.get('/weather', (req,res) => {
     res.send({
         address: 'Lalitpur',
         temperature: 27.2,
         rainProbability: 48
+    });
+})
+
+//displaying error for the url after help that mismatches
+app.get('/help/*', (req, res) => {
+    res.render('404',{
+        title: '404',
+        errorMessage: 'Help Page Article Not Found !!!',
+        name: 'Aashish'
+    });
+})
+
+//displaying own message for error
+app.get('*', (req, res) => {
+    res.render('404',{
+        title: '404',
+        errorMessage: 'Page Not Found !!!',
+        name: 'Aashish'
     });
 })
 
