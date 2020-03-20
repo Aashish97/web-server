@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
+    <link rel="icon" href="./img/weather.png">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
-    <div class="image-wrapper">
-        <h1>{{title}}</h1>
+    <div class="header-content">
         {{>header}}
-        <img src="./img/duke.jpg" alt=""duke-photo>
-        {{>footer}}
+        <div class="image-wrapper">
+            <img class="image-wrapper" src="./img/duke.jpg" alt=""duke-photo>
+        </div>
     </div>
+
+    {{>footer}}
 </body>
 </html>
