@@ -45,10 +45,15 @@ app.get('/help', (req, res) => {
 
 
 app.get('/weather', (req,res) => {
+    if(!req.query.address){
+        res.send({
+            error: 'Please provide address!!!'
+        })
+    }
     res.send({
-        address: 'Lalitpur',
         temperature: 27.2,
-        rainProbability: 48
+        rainProbability: 48,
+        address: req.query.address
     });
 })
 
