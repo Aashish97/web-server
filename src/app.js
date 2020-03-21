@@ -3,6 +3,9 @@ const path = require('path');
 const express = require('express');
 const hbs = require('hbs');
 
+const geocode = require('./utils/geocode');
+const forecast =require('./utils/forecast');
+
 const app = express();
 
 //Defines paths for express config
@@ -50,10 +53,20 @@ app.get('/weather', (req,res) => {
             error: 'Please provide address!!!'
         })
     }
-    res.send({
-        temperature: 27.2,
-        rainProbability: 48,
-        address: req.query.address
+
+    geocode(req.query.address, (error, {latitude, longitude, location}) => {
+        error ? console.log(error) : 
+        forecast(latitude, longitude, (error, {weatherSummary, currentTemperature, rainProbability}) => {
+            if(error){
+                return res.send({error});
+            }
+            res.send({
+                location,
+                summary: weatherSummary,
+                current_temperature: currentTemperature,
+                rain_probability: rainProbability
+            })
+        });
     });
 })
 
