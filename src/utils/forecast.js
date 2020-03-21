@@ -6,9 +6,9 @@ const forecast = (latitude, longitude, callback) => {
     const url = 'https://api.darksky.net/forecast/ab50cd36126b4928f245dedbfb477f85/' + latitude + ',' + longitude;
     request( {url, json: true}, (error, {body}) => {
         if (error){
-            callback("Unable to connect with weather API!!!");
+            callback("Unable to connect with weather API!!!", undefined);
         }else if (body.error){
-            callback("Unable to find the location");
+            callback("Unable to find the location", undefined);
         }else{
             callback(undefined, {
                 currentTemperature: body.currently.temperature,
