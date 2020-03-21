@@ -54,11 +54,19 @@ app.get('/weather', (req,res) => {
         })
     }
 
-    geocode(req.query.address, (error, {latitude, longitude, location}) => {
-        error ? console.log(error) : 
-        forecast(latitude, longitude, (error, {weatherSummary, currentTemperature, rainProbability}) => {
+    geocode(req.query.address, (error, {latitude, longitude, location} = {}) => {
+        if(error){
+            res.send({
+                error: 'Geocode not found. Please try another address!!!'
+            })
+        }
+            
+            
+        forecast(latitude, longitude, (error, {weatherSummary, currentTemperature, rainProbability} = {}) => {
             if(error){
-                return res.send({error});
+                res.send({
+                    error: 'Location not found. Please try another address!!!'
+                })
             }
             res.send({
                 location,
