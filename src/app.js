@@ -40,9 +40,9 @@ app.get('/about', (req, res) => {
 
 app.get('/help', (req, res) => {
     res.render('help', {
-        title: 'help',
+        title: 'Help',
         name: 'Aashish',
-        helpText: 'This is a help message'
+        helpText: 'For any kind of help please contact @ itsmeasish98@gmail.com'
     })
 })
 
