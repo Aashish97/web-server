@@ -22,7 +22,7 @@ weatherForm.addEventListener('submit', (e) => {
             }else{
                 messageOne.textContent = data.location;
                 messageTwo.textContent = data.summary;
-                messageThree.textContent = 'Temperature: ' + data.current_temperature;
+                messageThree.textContent = 'Temperature: ' + data.current_temperature  + '°C (High temperature: ' + data.high + '°C && Low temperature: ' + data.low + '°C)';;
                 messageFour.textContent = 'Rain Probability: ' + data.rain_probability;
             }
         })
